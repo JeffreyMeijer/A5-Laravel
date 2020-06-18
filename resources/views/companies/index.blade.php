@@ -3,30 +3,26 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="display-3">Contacten</h1>
+        <h1 class="display-3">Bedrijven</h1>
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <td>ID</td>
                     <td>Naam</td>
-                    {{-- <td>Bedrijf</td> --}}
-                    <td>Email</td>
                     <td colspan=2>Actions</td>
                 </tr>
             </thead>
             <tbody>
-                @foreach($contacts as $contact)
+                @foreach($companies as $company)
                 <tr>
-                    <td>{{$contact->id}}</td>
-                    <td>{{$contact->first_name}} {{$contact->last_name}}</td>
-                    {{-- <td>{{$contact->companies->name}}</td> --}}
-                    <td>{{$contact->email}}</td>
+                    <td>{{$company->id}}</td>
+                    <td>{{$company->name}}</td>
                     <td>
-                        <a href="{{route('contacts.edit', $contact->id)}}" class="btn btn-primary">Aanpassen</a>
+                        <a href="{{route('companies.edit', $company->id)}}" class="btn btn-primary">Aanpassen</a>
                     </td>
                     <td>
-                        <form action="{{route('contacts.destroy', $contact->id)}}" method="post">
+                        <form action="{{route('companies.destroy', $company->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Verwijderen</button>

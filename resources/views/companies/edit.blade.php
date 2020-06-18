@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
-        <h1 class="display-3">Contact aanpassen</h1>
+        <h1 class="display-3">Bedrijf aanpassen</h1>
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -15,12 +15,12 @@
         </div>
         <br/>
         @endif
-        <form method="post" action="{{route('contacts.update', $contact->id)}}">
+        <form method="post" action="{{route('companies.update', $company->id)}}">
             @method('PATCH')
             @csrf
             <div class="form-group">
-                <label for="first_name">Voornaam:</label>
-                <input type="text" class="form-control" name="first_name" value={{$contact->first_name}}>
+                <label for="first_name">Naam:</label>
+                <input type="text" class="form-control" name="first_name" value={{$company->name}}>
             </div>
             <button type="submit" class="btn btn-primary">Aanpassen</button>
         </form>
