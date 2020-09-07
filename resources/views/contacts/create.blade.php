@@ -25,6 +25,11 @@
             <input type="email" class="form-control" name="email"/>
         </div>
 
+        <div class="form-group">
+            <label for="company">Bedrijf</label>
+            {{!! Form::select('company_id', $companies, $contact->company_id, ['class' => 'form-control']) !!}}
+        </div>
+
         <button type="submit" class="btn btn-primary">Toevoegen</button>
     </form>
     </div>
