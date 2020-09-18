@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bands;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        return view('dashboard', [
+            'bands' => $this->getBandsOwnerByUserID($user->id)
+        ]);
+    }
+
+    // Returns Band Object
+    private function getBandsOwnerByUserID($id)
+    {
+        $bands = Bands::where('user_id', $id)->get();
+        return $bands;
     }
 }
