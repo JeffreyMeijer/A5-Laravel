@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Bands;
 
 class DashboardController extends Controller
 {
@@ -30,10 +29,10 @@ class DashboardController extends Controller
         ]);
     }
 
-    // Returns Band Object
-    private function getBandsOwnerByUserID($id)
-    {
-        $bands = Bands::where('user_id', $id)->get();
-        return $bands;
-    }
+    // // Returns Band Object
+    // private function getBandsOwnerByUserID($id)
+    // {
+    //     $bands = Bands::where('user_id', $id)->get();
+    //     return $bands;
+    // }
 }
