@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('band/{id}', [App\Http\Controllers\BandController::class, 'index'])->name('band');
+Route::get('settings/{id}', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
 
 Auth::routes();
 
