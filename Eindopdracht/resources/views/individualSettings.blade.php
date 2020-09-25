@@ -30,7 +30,7 @@
 
             <div class="profile-header-container">
                 <div class="profile-header-img">
-                    <img class="rounded-circle" src="/storage/images/{{ $band->image }}" />
+                    <img class="rounded-circle" src="/storage/images/{{ $band->image }}" style="height:100px;width:100px;" />
                     <!-- badge -->
                     <div class="rank-label-container">
                         <span class="label label-default rank-label">{{$band->name}}</span>
@@ -40,7 +40,7 @@
 
         </div>
         <div class="row justify-content-center">
-            <form action="/settings" method="post" enctype="multipart/form-data">
+            <form action="/settings/{{ $band->id }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="file" class="form-control-file" name="image" id="imageFile" aria-describedby="fileHelp">

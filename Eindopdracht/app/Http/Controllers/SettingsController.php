@@ -11,12 +11,22 @@ class SettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $band = $this->getBandByID($id);
-        return view('settings');
+        $user = auth()->user();
+        $bands = $this->getBandsOwnerByUserID($user->id);
+        return view('generalSettings', [
+            'bands' => $bands
+        ]);
     }
 
+    public function showBand($id)
+    {
+        $band = $this->getBandByID($id);
+        return view('individualSettings', [
+            'band' => $band
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +46,7 @@ class SettingsController extends Controller
     public function store(Request $request, $bandID)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
         $band = $this->getBandByID($bandID);
@@ -46,6 +56,8 @@ class SettingsController extends Controller
 
         $band->image = $imgname;
         $band->save();
+
+        return back()->with('success', 'Afbeelding gewijzigd');
     }
 
     /**
