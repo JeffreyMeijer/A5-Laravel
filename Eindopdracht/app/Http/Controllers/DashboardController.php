@@ -28,11 +28,4 @@ class DashboardController extends Controller
             'bands' => $this->getBandsOwnerByUserID($user->id)
         ]);
     }
-
-    // // Returns Band Object
-    // private function getBandsOwnerByUserID($id)
-    // {
-    //     $bands = Bands::where('user_id', $id)->get();
-    //     return $bands;
-    // }
 }
