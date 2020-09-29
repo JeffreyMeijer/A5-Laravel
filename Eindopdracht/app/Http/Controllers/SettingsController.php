@@ -15,7 +15,7 @@ class SettingsController extends Controller
     {
         $user = auth()->user();
         $bands = $this->getBandsOwnerByUserID($user->id);
-        return view('generalSettings', [
+        return view('settings.generalSettings', [
             'bands' => $bands
         ]);
     }
@@ -23,7 +23,36 @@ class SettingsController extends Controller
     public function showBand($id)
     {
         $band = $this->getBandByID($id);
-        return view('individualSettings', [
+        return view('settings.individualSettings', [
+            'band' => $band
+        ]);
+    }
+
+    public function showNamePage($id)
+    {
+        $band = $this->getBandByID($id);
+        return view('settings.changeName', [
+            'band' => $band
+        ]);
+    }
+    public function showPhotoPage($id)
+    {
+        $band = $this->getBandByID($id);
+        return view('settings.changePhoto', [
+            'band' => $band
+        ]);
+    }
+    public function showTextPage($id)
+    {
+        $band = $this->getBandByID($id);
+        return view('settings.changeTexts', [
+            'band' => $band
+        ]);
+    }
+    public function showEmbedPage($id)
+    {
+        $band = $this->getBandByID($id);
+        return view('settings.changeEmbeds', [
             'band' => $band
         ]);
     }

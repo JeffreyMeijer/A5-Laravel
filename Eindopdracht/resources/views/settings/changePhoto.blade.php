@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
+@extends('layouts.sidebar')
 @section('content')
-    <div class="container">
+
+<div class="container" id="settingsContainer">
         <div class="row">
             @if ($message = Session::get('success'))
 
@@ -44,7 +45,7 @@
                 @csrf
                 <div class="form-group">
                     <input type="file" class="form-control-file" name="image" id="imageFile" aria-describedby="fileHelp">
-                    <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
+                    <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 4MB.</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
