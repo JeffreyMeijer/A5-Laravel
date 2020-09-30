@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::get('band/{id}', [App\Http\Controllers\BandController::class, 'index'])->name('band');
 Route::get('settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
