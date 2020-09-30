@@ -72,7 +72,7 @@ class SettingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $bandID)
+    public function storePhoto(Request $request, $bandID)
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
@@ -89,6 +89,47 @@ class SettingsController extends Controller
         return back()->with('success', 'Afbeelding gewijzigd');
     }
 
+    public function storeName(Request $request, $bandID)
+    {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $band = $this->getBandByID($bandID);
+        $band->name = request()->input('name');
+        $band->save();
+        
+        return back()->with('success', 'Naam gewijzigd');
+    }
+    public function storeText(Request $request, $bandID)
+    {
+        // $request->validate([
+        //     'shortDescription' => 'required',
+        //     'biography' => 'required'
+        // ]);
+
+        $band = $this->getBandByID($bandID);
+        $band->description = request()->input('shortDescription');
+        $band->biography = request()->input('biography');
+        $band->save();
+
+        return back()->with('success', 'Teksten gewijzigd');
+    }
+    public function storeEmbed(Request $request, $bandID)
+    {
+        // $request->validate([
+        //     'shortDescription' => 'required',
+        //     'biography' => 'required'
+        // ]);
+
+        $band = $this->getBandByID($bandID);
+        $band->embed_url_1 = request()->input('embed_1');
+        $band->embed_url_2 = request()->input('embed_2');
+        $band->embed_url_3 = request()->input('embed_3');
+        $band->save();
+
+        return back()->with('success', 'Embeds gewijzigd');
+    }
     /**
      * Display the specified resource.
      *

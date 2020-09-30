@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBandPictureColumn extends Migration
+class CreateBandTextColumns extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class CreateBandPictureColumn extends Migration
     public function up()
     {
         Schema::table('bands', function(Blueprint $table) {
-            $table->string('image')->default('default.jpg');
+            $table->string('description');
+            $table->string('biography');
         });
     }
 
@@ -26,7 +27,8 @@ class CreateBandPictureColumn extends Migration
     public function down()
     {
         Schema::table('bands', function(Blueprint $table) {
-            $table->dropColumn('image');
+            $table->dropColumn('description');
+            $table->dropColumn('biography');
         });
     }
 }

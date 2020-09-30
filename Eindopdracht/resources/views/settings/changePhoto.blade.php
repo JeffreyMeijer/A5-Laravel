@@ -41,7 +41,7 @@
 
         </div>
         <div class="row justify-content-center">
-            <form action="/settings/{{ $band->id }}" method="post" enctype="multipart/form-data">
+            <form action="/settings/{{ $band->id }}/photo" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="file" class="form-control-file" name="image" id="imageFile" aria-describedby="fileHelp">

@@ -35,7 +35,7 @@
                     @foreach($bands as $band)
                     <tr>
                         <td>{{ $band->id }}</td>
-                        <td><a href="{{ url('settings/'. $band->id)}}">{{ $band->name }}</a></td>
+                        <td><a href="{{ url('settings/'. $band->id . '/name')}}">{{ $band->name }}</a></td>
                         <td><a href="#">{{ $band->user->name }}</a></td>
                     </tr>
                     @endforeach

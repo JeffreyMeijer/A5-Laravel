@@ -15,9 +15,6 @@
     background-color:lightblue;
     box-shadow: 0 0 1px 0 inset;
 }
-.py-4 {
-    overflow-y: hidden;
-}
 #sidebar-nav {
     position: absolute;
     width:200px;

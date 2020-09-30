@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBandPictureColumn extends Migration
+class CreateBandEmbedColumns extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class CreateBandPictureColumn extends Migration
     public function up()
     {
         Schema::table('bands', function(Blueprint $table) {
-            $table->string('image')->default('default.jpg');
+            $table->string('embed_url_1');
+            $table->string('embed_url_2');
+            $table->string('embed_url_3');
         });
     }
 
@@ -26,7 +28,9 @@ class CreateBandPictureColumn extends Migration
     public function down()
     {
         Schema::table('bands', function(Blueprint $table) {
-            $table->dropColumn('image');
+            $table->dropColumn('embed_url_1');
+            $table->dropColumn('embed_url_2');
+            $table->dropColumn('embed_url_3');
         });
     }
 }
