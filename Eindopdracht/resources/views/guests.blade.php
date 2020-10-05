@@ -33,11 +33,7 @@
 
 <div class="d-flex justify-content-center align-items-center guestBackground">
     <div class="container">
-        <div class="row row-padding">
-            <div class="typewriter">
-                <h1 style="color:white;">Zoek hier de Electronic Press Kit van een band!</h1>
-            </div>
-        </div>
+        <h1 class="row-padding" style="color:white;text-align:center;letter-spacing:.15em;">Zoek hier de Electronic Press Kit van een band!</h1>
         <form action="/search" method="POST">
             @csrf
             <input type="text" class="form-control guestSearch" name="query">
