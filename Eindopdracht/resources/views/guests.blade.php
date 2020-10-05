@@ -33,8 +33,10 @@
 
 <div class="d-flex justify-content-center align-items-center guestBackground">
     <div class="container">
-        <div class="typewriter">
-        <h1 style="color:white;">Zoek hier de Electronic Press Kit van een band!</h1>
+        <div class="row row-padding">
+            <div class="typewriter">
+                <h1 style="color:white;">Zoek hier de Electronic Press Kit van een band!</h1>
+            </div>
         </div>
         <form action="/search" method="POST">
             @csrf
