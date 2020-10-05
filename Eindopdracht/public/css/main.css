@@ -23,3 +23,43 @@
     left:0;
     top:55px;
 }
+.bands {
+    display:grid;
+    grid-template-columns: auto auto auto;
+    grid-gap:20px;
+}
+.card-image {
+    min-height: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.card-text {
+    text-align: center;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.card {
+    border:unset;
+}
+.guestBackground {
+    min-height:900px;
+    background-image: url('/storage/images/guestBackground.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+
+.guestSearch {
+    background-color:unset;
+    border:unset;
+    border-bottom: 1px solid #ced4da;
+    border-radius: unset;
+}
+.guestSearch:focus {
+    background-color:unset!important;  
+    outline: none;
+}
+.guestSearch:active {
+    outline:none;
+}
