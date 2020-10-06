@@ -28,6 +28,7 @@
     grid-template-columns: auto auto auto;
     grid-gap:20px;
 }
+
 .card-image {
     min-height: 250px;
     background-repeat: no-repeat;
@@ -62,4 +63,15 @@
 }
 .guestSearch:active {
     outline:none;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .bands { 
+        grid-template-columns: auto auto;
+        grid-gap:20px;
+    }
+    .card-image {
+        min-height: 150px;
+    }
 }
