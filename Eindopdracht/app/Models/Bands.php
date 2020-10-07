@@ -8,11 +8,14 @@ use App\Models\User;
 
 class Bands extends Model
 {
+    use HasFactory;
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
-    // use HasFactory;
+    public function users() {
+        return $this->belongsToMany(User::class, 'bands')->withPivot('user_id');
+    }
     protected $fillable = [
-        'name'
+        'name', 'user_id','image','description','biography','embed_url_1','embed_url_2','embed_url_3'
     ];
 }

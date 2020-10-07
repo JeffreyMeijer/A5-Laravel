@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bands;
 
 class SettingsController extends Controller
 {
@@ -15,6 +16,13 @@ class SettingsController extends Controller
     {
         $user = auth()->user();
         $bands = $this->getBandsOwnerByUserID($user->id);
+        foreach($bands as $band) {
+            die($band->users()->sync([1, 2]));
+            // $band->save();
+            foreach($band->users as $user) {
+                echo($user->name);
+            }
+        }
         return view('settings.generalSettings', [
             'bands' => $bands
         ]);
