@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use App\Models\Bands;
+use App\Models\Band;
 
 class Controller extends BaseController
 {
@@ -15,13 +15,13 @@ class Controller extends BaseController
     // Returns Band Object
     public function getBandsOwnerByUserID($id)
     {
-        $bands = Bands::where('user_id', $id)->get();
+        $bands = Band::where('user_id', $id)->get();
         return $bands;
     }
     // Returns Band Object
     public function getBandByID($id)
     {
-        $band = Bands::where('id',$id)->first();
+        $band = Band::where('id',$id)->first();
         return $band;
     }
 }
