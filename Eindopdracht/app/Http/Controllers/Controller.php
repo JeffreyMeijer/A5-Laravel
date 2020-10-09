@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Band;
+use App\Models\User;
 
 class Controller extends BaseController
 {
@@ -15,7 +16,8 @@ class Controller extends BaseController
     // Returns Band Object
     public function getBandsOwnerByUserID($id)
     {
-        $bands = Band::where('user_id', $id)->get();
+        $user = User::findOrFail($id);
+        $bands = $user->bands;
         return $bands;
     }
     // Returns Band Object

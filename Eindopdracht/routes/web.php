@@ -25,11 +25,15 @@ Route::get('settings/{id}/name', [App\Http\Controllers\SettingsController::class
 Route::get('settings/{id}/photo', [App\Http\Controllers\SettingsController::class, 'showPhotoPage'])->name('settings');
 Route::get('settings/{id}/text', [App\Http\Controllers\SettingsController::class, 'showTextPage'])->name('settings');
 Route::get('settings/{id}/embed', [App\Http\Controllers\SettingsController::class, 'showEmbedPage'])->name('settings');
+Route::get('settings/{id}/owner', [App\Http\Controllers\SettingsController::class , 'showOwnerPage'])->name('settings');
+Route::get('settings/{id}/owner/delete/{user}', [App\Http\Controllers\SettingsController::class, 'deleteOwner'])->name('settings');
+
 
 Route::post('settings/{id}/photo', [App\Http\Controllers\SettingsController::class, 'storePhoto']);
 Route::post('settings/{id}/name', [App\Http\Controllers\SettingsController::class, 'storeName']);
 Route::post('settings/{id}/text', [App\Http\Controllers\SettingsController::class, 'storeText']);
 Route::post('settings/{id}/embed', [App\Http\Controllers\SettingsController::class, 'storeEmbed']);
+Route::post('settings/{id}/owner/add', [App\Http\Controllers\SettingsController::class, 'storeOwner'])->name('settings');
 Auth::routes();
 
 Route::post('search', [App\Http\Controllers\HomeController::class, 'search']);

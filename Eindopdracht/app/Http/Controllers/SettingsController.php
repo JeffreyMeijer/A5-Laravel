@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bands;
+use App\Models\User;
 
 class SettingsController extends Controller
 {
@@ -18,9 +19,6 @@ class SettingsController extends Controller
         $bands = $this->getBandsOwnerByUserID($user->id);
         foreach($bands as $band) {
             $band->addUser($user->id);
-            foreach($band->users as $user) {
-                echo($user->name);
-            }
         }
         return view('settings.generalSettings', [
             'bands' => $bands
@@ -60,6 +58,15 @@ class SettingsController extends Controller
     {
         $band = $this->getBandByID($id);
         return view('settings.changeEmbeds', [
+            'band' => $band
+        ]);
+    }
+    public function showOwnerPage($id)
+    {
+        $band = $this->getBandByID($id);
+        $users = User::all();
+        return view('settings.addOwner', [
+            'users' => $users,
             'band' => $band
         ]);
     }
@@ -108,6 +115,14 @@ class SettingsController extends Controller
         
         return back()->with('success', 'Naam gewijzigd');
     }
+
+    public function storeOwner(Request $request, $bandID)
+    {
+        $band = $this->getBandByID($bandID);
+        $band->addUser(request()->input('users'));
+        return back()->with('success', 'Band owner toegevoegd');
+    }
+
     public function storeText(Request $request, $bandID)
     {
         // $request->validate([
@@ -136,6 +151,14 @@ class SettingsController extends Controller
         $band->save();
 
         return back()->with('success', 'Embeds gewijzigd');
+    }
+
+    public function deleteOwner($bandID, $id)
+    {
+        $band = $this->getBandByID($bandID);
+        $band->users()->detach($id);
+
+        return back()->with('success', 'Eigenaar verwijderd');
     }
     /**
      * Display the specified resource.
