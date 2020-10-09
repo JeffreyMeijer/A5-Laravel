@@ -11,6 +11,13 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function bands() {
+        return $this->belongsToMany(Band::class, 'band_owners');
+    }
+
+    public function addBand($id) {
+        $this->bands()->syncWithoutDetaching($id);
+    }
 
     /**
      * The attributes that are mass assignable.

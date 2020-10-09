@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Bands;
+use App\Models\Band;
 class HomeController extends Controller
 {
     public function index()
@@ -22,7 +22,7 @@ class HomeController extends Controller
     {
         $query = request()->input('query');
         if($query) {
-            $bands = Bands::where('name', 'LIKE', '%' . $query . '%')->get();
+            $bands = Band::where('name', 'LIKE', '%' . $query . '%')->get();
             if(count($bands) > 0) {
                 // return back()->withMessage('Bands gevonden')
                 return view('guests', [
